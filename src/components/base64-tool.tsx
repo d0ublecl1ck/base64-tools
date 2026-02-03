@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { SegmentedTabsList, SegmentedTabsTrigger, Tabs, TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import {
@@ -243,10 +243,10 @@ export function Base64Tool() {
       </CardHeader>
       <CardContent>
         <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "text" | "image")}>
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="text">文本</TabsTrigger>
-            <TabsTrigger value="image">图片</TabsTrigger>
-          </TabsList>
+          <SegmentedTabsList>
+            <SegmentedTabsTrigger value="text">文本</SegmentedTabsTrigger>
+            <SegmentedTabsTrigger value="image">图片</SegmentedTabsTrigger>
+          </SegmentedTabsList>
 
           <TabsContent value="text">
             <div className="grid gap-6">
