@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Base64 工具（在线编码/解码 & 图片预览）
 
-## Getting Started
+一个专注体验与隐私的 Base64 在线工具：支持文本 Base64 编码/解码，以及图片 Base64 / Data URL 预览。
 
-First, run the development server:
+## 功能
+
+- 文本 Base64 编码 / 解码（UTF-8）
+- URL-safe 编码（`+ /` ↔ `- _`）与可选移除末尾 `=`
+- 解码时可忽略空白字符、可自动移除 `data:*;base64,` 前缀
+- 图片 Base64 / Data URL 直接渲染预览（可自动识别 PNG/JPG/GIF/WebP/SVG 等）
+- 快捷键：`Ctrl` / `⌘` + `Enter`
+
+## 本地开发
+
+> 建议使用 `pnpm`（仓库已包含 `pnpm-lock.yaml`）。
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+然后访问 `http://localhost:3000`。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 常用命令
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm dev        # 本地开发
+pnpm build      # 构建
+pnpm start      # 生产启动
+pnpm lint       # ESLint
+pnpm test       # Vitest（单次运行）
+pnpm test:watch # Vitest（监听）
+```
 
-## Learn More
+## 目录结构（简要）
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/page.tsx`：首页
+- `src/components/base64-tool.tsx`：工具 UI 逻辑
+- `src/lib/base64.ts`：Base64 核心实现（解析/规范化/编码/解码/图片类型推断）
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 隐私说明
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+默认在浏览器本地处理输入内容，不会因操作而上传；但粘贴敏感信息前仍建议自行评估风险并做好脱敏。
